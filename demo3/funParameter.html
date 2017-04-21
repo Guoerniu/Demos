@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+    </style>
+</head>
+<body>
+    <input type="text" value="北京市"><br><br>
+    <input type="text" value="海淀区"><br><br>
+    <button id="btn">传参</button>
+    <script>
+        var btn=document.getElementById('btn'),
+            texts=document.getElementsByTagName('input');
+        function getVal(a,b){
+            alert(a.value);
+            alert(b.value);
+        }
+         btn.onclick=function(){
+             getVal(texts[0],texts[1])
+         }
+    </script>
+</body>
+</html>
