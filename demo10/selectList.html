@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示/隐藏</title>
+    <style>
+        body,div,ul,li,h2{margin:0;padding:0;}
+        body{font:12px/1.5 Tahoma;}
+        ul{list-style-type:none;}
+        #box{width:200px;border:1px solid #aaa;margin:10px auto;}
+        #box h2{cursor:pointer;color:#57646E;font-size:14px;font-weight:400;background:#ced3d7;border:1px solid;height:30px;line-height:30px;padding-left:10px;border-color:#fff #e9edf2;position: relative;}
+        #box h2.open{background-position:180px -12px;}
+        #box .down::after{content:'';border: 5px solid transparent;border-top-color:#333;position:absolute;top: 14px;right: 10px;}
+        #box .up::after{content:'';border: 5px solid transparent;border-bottom-color:#333;position:absolute;top: 8px;right: 10px;}
+        #box ul{border-top:1px solid #DEE3E6;}
+        #box li{height:25px;line-height:25px;vertical-align:top;}
+        #box a{display:block;color:#6b7980;background:#e9edf2;text-decoration:none;padding:0 10px;}
+        #box a:hover{background:#fff;text-decoration:underline;}
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2 class="down">播放列表...</h2>
+    <ul>
+        <li><a href="javascript:;">玩家之徒 - 蔡依林</a></li>
+        <li><a href="javascript:;">原谅我就是这样的女生 - 戴佩妮</a></li>
+        <li><a href="javascript:;">猜不透 - 丁当</a></li>
+        <li><a href="javascript:;">自导自演 - 周杰伦</a></li>
+        <li><a href="javascript:;">浪漫窝 - 弦子</a></li>
+        <li><a href="javascript:;">流年 - 王菲</a></li>
+    </ul>
+</div>
+<script>
+    var tit = document.getElementById('box').getElementsByTagName('h2')[0],
+        uls = document.getElementsByTagName('ul')[0];
+    //第一种方法：
+        tit.onclick=function(){
+            if(this.className=='down'){
+                this.className='up';
+                uls.style.display='none';
+            }else{
+                this.className='down';
+                uls.style.display='block';
+            }
+        };
+
+    //第二种方法：
+        /*tit.onclick = function ()
+        {
+            var sty = uls.style;
+            sty.display = sty.display == "none" ? "block" : "none";
+            tit.className = sty.display == "none" ? "up" : "down"
+        }*/
+
+</script>
+</body>
+</html>
