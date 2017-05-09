@@ -5,9 +5,11 @@
     <title></title>
     <style>
         body{text-align: center;}
+        #box{width:200px;height:300px;}
     </style>
 </head>
 <body>
+    <div id="box"></div>
     <input type="text" value="北京市"><br><br>
     <input type="text" value="海淀区"><br><br>
     <button id="btn">传参</button>
@@ -21,6 +23,7 @@
          btn.onclick=function(){
              getVal(texts[0],texts[1])
          }
+
     </script>
 </body>
 </html>
