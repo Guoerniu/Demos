@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECharts练习-柱状图一</title>
+    <style>
+        #box{width:600px;height:400px;margin:50px auto;}
+    </style>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom元素 -->
+<div id="box"></div>
+
+<!-- 引入 echarts.js -->
+<script src="../echarts.min.js"></script>
+<script type="text/javascript">
+    /*
+        第一步：准备一个具备宽高的盒子
+        第二步：引入echarts.js文件
+        第三步：初始化 echarts 实例
+        第四步：添加配置项和数据
+        第五步：显示图表
+    */
+    
+    // 基于准备好的dom元素，初始化echarts实例
+    var myChart=echarts.init(document.getElementById('box'));
+
+    // 指定图表的配置项和数据
+    var option={
+        title:{  //标题组件
+            text:'ECharts入门示例'  //主标题文本，支持使用 \n 换行
+        },
+        tooltip:{}, //提示框组件
+        legend:{ //图例组件。
+            data:[{ //图例的数据数组
+                name:'销量',
+                icon:'circle', //强制设置图形为圆。
+                textStyle:{
+                    color:'blue',  // 设置文本为蓝色加粗
+                    fontWeight:'bold'
+                }
+            }]
+        },
+        xAxis:{ //直角坐标系 grid 中的 x 轴
+            data:['T恤','衬衫','风衣','防晒衣','夹克','外套']
+        },
+        yAxis:{}, //直角坐标系 grid 中的 y 轴
+        /*
+         series.type有
+            bar圆柱 line线条 pie饼图 scatter散点(气泡)图 effectScatter有涟漪特效的散点(气泡)图
+               treemap面积图 funnel漏斗图 gauge仪表盘
+         */
+        series:[{ //系列列表。每个系列通过 type 决定自己的图表类型
+            name:'销量',
+            type:'pictorialBar',
+            symbol: 'rect',//circle圆形 rect长方形 roundRect桶状 triangle三角 diamond菱形 pin气球 arrow箭头
+            symbolSize:['50%','100%'], //图形的大小
+            data:[23,34,56,12,78,55],
+            itemStyle: {
+                normal: {
+                    //定义一个list，然后根据索引取得不同的值，这样就实现了颜色区分，
+                    color: function(params) {
+                        var colorList = [
+                            '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                            '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                            '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            }
+        }],
+        backgroundColor:'#eee' //盒子背景色
+    };
+    myChart.on('click', function (params) {
+        alert(params.name+'：'+params.value+'%');
+    });
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
