@@ -1,0 +1,1 @@
+function fun1(n,o){return n+o}console.log(fun1(2,3));
